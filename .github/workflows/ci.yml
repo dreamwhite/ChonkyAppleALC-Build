@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: "Checkout to current repo"
         uses: actions/checkout@v3
-      - name: "ls"
-        run: "ls"
       - name: "Run main.py script"
         run: "python3 main.py -v"
       - name: "Check if AppleALC zip exists"
