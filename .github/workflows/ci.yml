@@ -48,7 +48,10 @@ jobs:
         id: codecs
       - name: Get list of codecs
         working-directory: AppleALC
-        run: echo ${{ steps.codecs.outputs.CODECS }}
+        run: |
+          for codec in ${{ steps.codecs.outputs.CODECS }}[@]; do
+            echo "Codec: $codec"
+          done;
       #- name: Upload to artifacts
       #  if: always()
       #  uses: actions/upload-artifact@v3
