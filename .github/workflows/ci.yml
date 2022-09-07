@@ -32,6 +32,8 @@ jobs:
             wget https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh  > /dev/null 2>&1
             bash bootstrap.sh
           fi
+      - name: pwd
+        run: pwd
       - name: Create a temporarily Resources folder
         run: |
           mv Resources Resources_bak
