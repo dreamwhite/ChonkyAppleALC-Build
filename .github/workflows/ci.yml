@@ -43,8 +43,10 @@ jobs:
           mv Resources_bak/Kexts.plist Resources
           mv Resources_bak/Vendors.plist Resources
       - name: Echoes available codecs
+        working-directory: AppleALC
+
         env:
-          CODECS: ls Resources_bak
+          codecs: ls Resources_bak
         run: echo $codecs
       #- name: Upload to artifacts
       #  if: always()
