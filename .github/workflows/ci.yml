@@ -42,11 +42,12 @@ jobs:
           mv Resources_bak/Controllers.plist Resources
           mv Resources_bak/Kexts.plist Resources
           mv Resources_bak/Vendors.plist Resources
-      - name: Set selected color
-        run: echo '::set-output name=SELECTED_COLOR::green'
-        id: random-color-generator
-      - name: Get color
-        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+      - name: Set codecs variable
+        working-directory: AppleALC
+        run: echo '::set-output name=CODECS::$(ls Resources_bak)'
+        id: codecs
+      - name: Get list of codecs
+        run: echo "The selected color is ${{ steps.codecs.outputs.CODECS }}"
       #- name: Upload to artifacts
       #  if: always()
       #  uses: actions/upload-artifact@v3
