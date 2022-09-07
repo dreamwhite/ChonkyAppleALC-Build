@@ -42,9 +42,9 @@ jobs:
           mv Resources_bak/Controllers.plist Resources
           mv Resources_bak/Kexts.plist Resources
           mv Resources_bak/Vendors.plist Resources
-      - name: ls current Resources_bak folder
-        working-directory: AppleALC
-        run: ls Resources_bak
+          for codec in $( ls Resources_bak); do
+            echo "Codec: $codec"
+          done;
       
       #- name: Upload to artifacts
       #  if: always()
