@@ -43,6 +43,7 @@ jobs:
           mv Resources_bak/Kexts.plist Resources
           mv Resources_bak/Vendors.plist Resources
       - name: Export codecs onto a variable
+        working-directory: AppleALC
         run: codecs=$(ls Resources_bak)
       - name: Echoes previous variable
         run: echo $codecs
