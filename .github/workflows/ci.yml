@@ -23,7 +23,7 @@ jobs:
 
       - name: "Check if AppleALC was correctly moved"
         if: always()
-        run: "ls Kexts"
+        run: "ls ../Kexts"
       
       
       #- name: "Upload to artifacts"
