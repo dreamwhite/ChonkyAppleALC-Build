@@ -44,7 +44,9 @@ jobs:
           mv Resources_bak/Vendors.plist Resources
       - name: ls current Resources folder
         working-directory: AppleALC
-        run: ls Resources
+        run: codecs=( $( ls Resources_bak ) )
+      - name: check if variables are inherited in steps
+        run: echo $codecs
       
       #- name: Upload to artifacts
       #  if: always()
