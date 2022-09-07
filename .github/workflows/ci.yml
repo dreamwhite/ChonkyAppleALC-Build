@@ -32,6 +32,16 @@ jobs:
             wget https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh  > /dev/null 2>&1
             bash bootstrap.sh
           fi
+      - name: Create a temporarily Resources folder
+        run: |
+          mv Resources Resources_bak
+          mkdir Resources
+          mv Resources_bak/PinConfigs.kext Resources
+          mv Resources_bak/Controllers.plist Resources
+          mv Resources_bak/Kexts.plist Resources
+          mv Resources_bak/Vendors.plist Resources
+      - name: ls current Resources folder
+        run: ls Resources
       
       #- name: Upload to artifacts
       #  if: always()
