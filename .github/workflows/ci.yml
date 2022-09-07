@@ -17,9 +17,9 @@ jobs:
         run: "ls"
       - name: "Run main.py script"
         run: "python3 main.py -v"
-      - name: "test if file exists"
+      - name: "Check if AppleALC-1.7.4 exists"
         if: always()
-        run: "test -f AppleALC/out/Build/Products/Release/AppleALC-1.7.4-RELEASE.zip"
+        run: "ls AppleALC/out/Build/Products/Release"
       
       
       #- name: "Upload to artifacts"
