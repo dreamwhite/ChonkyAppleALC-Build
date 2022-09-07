@@ -12,7 +12,7 @@ jobs:
       - name: Checkout to current repo
         uses: actions/checkout@v3
       - name: Create output directory for built kexts
-        run: "mkdir -p work/Kexts"
+        run: "mkdir -p Kexts"
       - name: Clone AppleALC from source
         run: "git clone https://github.com/acidanthera/AppleALC"
       - name: Remove compressed kern_resources.cpp
@@ -50,7 +50,12 @@ jobs:
         working-directory: AppleALC
         run: |
           for codec in ${{ steps.codecs.outputs.CODECS }}[@]; do
-            echo "Codec: $codec"
+            mv $codec Resources/
+            xcodebuild -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out
+            rm -rf Resources/$codec
+            mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
+            ls ../Kexts
+            read a
           done;
       #- name: Upload to artifacts
       #  if: always()
