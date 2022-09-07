@@ -56,8 +56,8 @@ jobs:
             mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
           done;
       - name: Upload to artifacts
-       if: always()
-       uses: actions/upload-artifact@v3
-       with:
-         name: Artifacts
-         path: Kexts/*
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: Kexts/*
