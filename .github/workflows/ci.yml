@@ -2,8 +2,7 @@ name: "Build"
 on:
   push:
     branches:
-      - master
-      - beta-testing
+      - ci-tests
 jobs:
   build:
     name: "Build AppleALC"
