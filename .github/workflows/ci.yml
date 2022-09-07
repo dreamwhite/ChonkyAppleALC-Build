@@ -9,8 +9,8 @@ jobs:
     runs-on:
       - macos-latest
     steps:
-      - name: "Install jq from brew.sh'
-        run: 'brew install jq'
+      - name: "Install jq from brew.sh"
+        run: "brew install jq"
       - name: "Checkout to current repo"
         uses: actions/checkout@v3
       - name: "Run main.py script"
