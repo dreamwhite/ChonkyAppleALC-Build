@@ -35,9 +35,6 @@ if os.path.exists('AppleALC/kern_resources.cpp'):
 if not os.path.exists('../Kexts'):
     print('Creating Kexts output folder...')
     subprocess.run(['mkdir', '../Kexts'], capture_output=not args.verbose)
-else:
-    print('Detected Kexts output folder. Removing it as it may contain old built kexts...\n')
-    subprocess.run(['rm', '-r', '../Kexts'], capture_output=not args.verbose)
 
 if not os.path.exists('MacKernelSDK'):
     print('WARNING: MacKernelSDK doesn\'t appear to be cloned. Cloning...\n')

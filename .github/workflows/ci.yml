@@ -20,9 +20,6 @@ jobs:
       - name: "Check if AppleALC zip exists"
         if: always()
         run: "ls AppleALC/out/Build/Products/Release"
-      - name: "pwd"
-        if: always()
-        run: "pwd"
       - name: "Check if AppleALC was correctly moved"
         if: always()
         run: "ls ../Kexts"
