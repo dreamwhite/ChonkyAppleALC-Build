@@ -1,31 +1,41 @@
-name: "Build"
+name: Build
 on:
   push:
     branches:
       - ci-tests
 jobs:
   build:
-    name: "Build AppleALC"
+    name: Build AppleALC
     runs-on:
       - macos-latest
     steps:
-      - name: "Install jq from brew.sh"
-        run: "brew install jq"
-      - name: "Checkout to current repo"
+      - name: Checkout to current repo
         uses: actions/checkout@v3
-      - name: "Run main.py script"
-        run: "python3 main.py"
-      - name: "Check if AppleALC zip exists"
-        if: always()
-        run: "ls AppleALC/out/Build/Products/Release"
-      - name: "Check if AppleALC was correctly moved"
-        if: always()
-        run: "ls /Users/runner/work/ChonkyAppleALC-Build/ChonkyAppleALC-Build"
+      - name: Create output directory for built kexts
+        run: mkdir -p work/Kexts
+      - name: Clone AppleALC from source
+        run: git clone https://github.com/acidanthera/AppleALC
+      - name: Remove compressed kern_resources.cpp
+        run: [-e AppleALC/AppleALC/kern_resources.cpp] && rm -rf AppleALC/AppleALC/kern_resources.cpp
+      - name: cd onto AppleALC source
+        run: cd AppleALC
+      - name: Clone MacKernelSDK from source
+        run: |
+          if [ ! -d MacKernelSDK ]; then
+            echo WARNING: MacKernelSDK doesn't appear to be cloned. Cloning...;
+            git clone https://github.com/acidanthera/MacKernelSDK.git
+          fi
+      - name: Build Lilu DEBUG from bootstrap.sh
+        run: |
+          if [ ! -d "Lilu.kext" ]; then
+            echo "WARNING: Lilu debug doesn't appear to be there. Building...";
+            $wget https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh  > /dev/null 2>&1
+            bash bootstrap.sh
+          fi
       
-      
-      #- name: "Upload to artifacts"
+      #- name: Upload to artifacts
       #  if: always()
       #  uses: actions/upload-artifact@v3
       #  with:
-      #    name: "ocvalidate.txt"
-      #    path: "./ocvalidate.txt"
+      #    name: ocvalidate.txt
+      #    path: ./ocvalidate.txt
