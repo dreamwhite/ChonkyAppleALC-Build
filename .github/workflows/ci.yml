@@ -22,7 +22,7 @@ jobs:
       - name: Clone MacKernelSDK from source
         run: |
           if [ ! -d MacKernelSDK ]; then
-            echo WARNING: MacKernelSDK doesn't appear to be cloned. Cloning...;
+            echo "WARNING: MacKernelSDK doesn't appear to be cloned. Cloning...;"
             git clone https://github.com/acidanthera/MacKernelSDK.git
           fi
       - name: Build Lilu DEBUG from bootstrap.sh
