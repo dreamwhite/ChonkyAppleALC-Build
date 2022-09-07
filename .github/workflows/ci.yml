@@ -50,7 +50,7 @@ jobs:
         working-directory: AppleALC
         run: |
           for codec in ${{ steps.codecs.outputs.CODECS }}[@]; do
-            mv $codec Resources/
+            mv Resources_bak/$codec Resources/
             xcodebuild -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out
             rm -rf Resources/$codec
             mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
