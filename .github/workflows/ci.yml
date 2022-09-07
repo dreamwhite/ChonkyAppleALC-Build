@@ -44,9 +44,7 @@ jobs:
           mv Resources_bak/Vendors.plist Resources
       - name: ls current Resources folder
         working-directory: AppleALC
-        run: echo "codecs=( $( ls Resources_bak ) ) " >> $GITHUB_ENV 
-      - name: check if variables are inherited in steps
-        run: echo $codecs
+        run: ls Resources
       
       #- name: Upload to artifacts
       #  if: always()
