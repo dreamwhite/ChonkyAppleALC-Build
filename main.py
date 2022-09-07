@@ -60,6 +60,9 @@ excluded_dir_files = [
 
 print(os.listdir('Resources'))
 
+print(os.listdir('..'))
+
+
 codecs = [codec for codec in os.listdir('Resources') if codec not in excluded_dir_files]
 
 for codec in codecs:
