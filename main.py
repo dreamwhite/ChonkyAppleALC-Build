@@ -58,10 +58,7 @@ excluded_dir_files = [
     'Vendors.plist.md5'
 ]
 
-print(os.listdir('Resources'))
-
-print(os.listdir('Kexts'))
-
+print(os.listdir('../Kexts'))
 
 codecs = [codec for codec in os.listdir('Resources') if codec not in excluded_dir_files]
 

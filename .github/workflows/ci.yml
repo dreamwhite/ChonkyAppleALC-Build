@@ -12,7 +12,7 @@ jobs:
       - name: "Checkout to current repo"
         uses: actions/checkout@v3
       - name: "Run main.py script"
-        run: "python3 main.py -v"
+        run: "python3 main.py"
       - name: "Check if AppleALC zip exists"
         if: always()
         run: "ls AppleALC/out/Build/Products/Release"
