@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: "Run main.py script"
-        run: "python3 main.py"
+        run: "python3 main.py -v"
       
       
       #- name: "Upload to artifacts"
