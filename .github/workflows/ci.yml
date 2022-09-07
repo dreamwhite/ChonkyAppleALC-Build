@@ -48,7 +48,7 @@ jobs:
         id: codecs
       - name: Get list of codecs
         working-directory: AppleALC
-        run: echo "The selected color is ${{ steps.codecs.outputs.CODECS }}"
+        run: echo ${{ steps.codecs.outputs.CODECS }}
       #- name: Upload to artifacts
       #  if: always()
       #  uses: actions/upload-artifact@v3
