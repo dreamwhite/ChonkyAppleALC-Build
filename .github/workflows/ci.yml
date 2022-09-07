@@ -12,13 +12,13 @@ jobs:
       - name: Checkout to current repo
         uses: actions/checkout@v3
       - name: Create output directory for built kexts
-        run: mkdir -p work/Kexts
+        run: "mkdir -p work/Kexts"
       - name: Clone AppleALC from source
-        run: git clone https://github.com/acidanthera/AppleALC
+        run: "git clone https://github.com/acidanthera/AppleALC"
       - name: Remove compressed kern_resources.cpp
         run: "[-e AppleALC/AppleALC/kern_resources.cpp] && rm -rf AppleALC/AppleALC/kern_resources.cpp"
       - name: cd onto AppleALC source
-        run: cd AppleALC
+        run: "cd AppleALC"
       - name: Clone MacKernelSDK from source
         run: |
           if [ ! -d MacKernelSDK ]; then
