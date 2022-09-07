@@ -49,12 +49,13 @@ jobs:
       - name: Get list of codecs
         working-directory: AppleALC
         run: |
-          for codec in ${{ steps.codecs.outputs.CODECS }}[@]; do
-            mv Resources_bak/$codec Resources/
-            xcodebuild -quiet -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out 
-            rm -rf Resources/$codec
-            mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
-            echo "Finished building $codec variant for AppleALC"
+          for codec in ${{ steps.codecs.outputs.CODECS }}; do
+            echo $codec
+            #mv Resources_bak/$codec Resources/
+            #xcodebuild -quiet -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out 
+            #rm -rf Resources/$codec
+            #mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
+            #echo "Finished building $codec variant for AppleALC"
           done;
       - name: Upload to artifacts
         if: always()
