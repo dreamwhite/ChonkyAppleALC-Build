@@ -68,8 +68,8 @@ for codec in codecs:
     command = f'find Resources -type d -not -name {codec} -not -name PinConfigs.kext -not -path Resources/PinConfigs.kext/Contents -not -name Resources | xargs rm -rf {{}};'
     subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
     subprocess.run(['xcodebuild', '-project', 'AppleALC.xcodeproj', '-scheme', 'AppleALC', '-configuration', 'Release', '-sdk', 'macosx', '-derivedDataPath', 'out'], capture_output=not args.verbose)
-    subprocess.run(['ls', '..'])
-    subprocess.run(['mv', 'out/Build/Products/Release/*.zip', f'../Kexts/{codec}.zip'], capture_output=not args.verbose)
+    subprocess.run(['pwd'])
+    subprocess.run(['mv', 'out/Build/Products/Release/AppleALC-1.7.6-RELEASE.zip', f'../Kexts/{codec}.zip'], capture_output=not args.verbose)
     subprocess.run(['git', 'reset', '--hard', 'HEAD'], capture_output=not args.verbose)
     #subprocess.run(['rm', '-rf', 'out'], capture_output=not args.verbose)
     sys.exit()
