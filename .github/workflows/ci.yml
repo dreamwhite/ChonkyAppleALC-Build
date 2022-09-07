@@ -18,7 +18,7 @@ jobs:
       - name: "Run main.py script"
         run: "python3 main.py -v"
       - name: "ls"
-        run: "ls"
+        run: "ls AppleALC"
       
       
       #- name: "Upload to artifacts"
