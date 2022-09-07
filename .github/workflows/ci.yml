@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: "Checkout to current repo"
         uses: actions/checkout@v3
-      - name: "Create output dir"
-        run: "mkdir ../Kexts"
       - name: "ls"
         run: "ls"
       - name: "Run main.py script"
