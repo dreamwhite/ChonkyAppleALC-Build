@@ -54,12 +54,10 @@ jobs:
             xcodebuild -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out
             rm -rf Resources/$codec
             mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
-            ls ../Kexts
-            read a
           done;
-      #- name: Upload to artifacts
-      #  if: always()
-      #  uses: actions/upload-artifact@v3
-      #  with:
-      #    name: ocvalidate.txt
-      #    path: ./ocvalidate.txt
+      - name: Upload to artifacts
+       if: always()
+       uses: actions/upload-artifact@v3
+       with:
+         name: Artifacts
+         path: Kexts/*
