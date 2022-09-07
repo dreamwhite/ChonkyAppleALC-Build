@@ -18,7 +18,7 @@ jobs:
         run: "ls AppleALC/out/Build/Products/Release"
       - name: "Check if AppleALC was correctly moved"
         if: always()
-        run: "pwd"
+        run: "ls /Users/runner/work/ChonkyAppleALC-Build/ChonkyAppleALC-Build"
       
       
       #- name: "Upload to artifacts"
