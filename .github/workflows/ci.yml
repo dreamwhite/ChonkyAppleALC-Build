@@ -17,8 +17,10 @@ jobs:
         run: git clone https://github.com/acidanthera/AppleALC
       - name: Get AppleALC latest stable release
         id: applealc-latest-release
-        run: echo "::set-output name=tag-name::$(git ls-remote --tags --refs https://github.com/acidanthera/AppleALC.assdasdasdasd | tail -n1 | cut -d/ -f3)"
+        working-directory: AppleALC
+        run: echo "::set-output name=tag-name::$(git describe --tags `git rev-list --tags --max-count=1`"
       - name: Check AppleALC tag name
+        working-directory: AppleALC
         run: |
           if [ -z "${{ steps.applealc-latest-release.outputs.tag-name }}" ] || [ "${{ steps.applealc-latest-release.outputs.tag-name }}" == "null" ]; then
             echo "Tag name is null"
