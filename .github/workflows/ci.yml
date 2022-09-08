@@ -12,12 +12,17 @@ jobs:
       - name: Checkout to current repo
         uses: actions/checkout@v3
       - name: Create output directory for built kexts
-        run: "mkdir -p Kexts"
+        run: mkdir -p Kexts
       - name: Clone AppleALC from source
-        run: "git clone https://github.com/acidanthera/AppleALC"
+        run: git clone https://github.com/acidanthera/AppleALC
       - name: Get AppleALC latest stable release
         id: applealc-latest-release
-        run: echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latest' | jq -r '.tag_name')"
+        run: echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latet' | jq -r '.tag_name')"
+      - name: Check AppleALC tag name
+        run: |
+          if [[ ! ${{ steps.applealc-latest-release.outputs.tag-name }} ]]; then
+            echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latest' | jq -r '.tag_name')"
+          fi
       - name: Checkout to AppleALC latest stable release
         working-directory: AppleALC
         run: git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
