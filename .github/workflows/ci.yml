@@ -19,6 +19,7 @@ jobs:
         id: applealc-latest-release
         run: echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latest' | jq -r '.tag_name')"
       - name: Checkout to AppleALC latest stable release
+        working-directory: AppleALC
         run: git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
       # - name: Remove compressed kern_resources.cpp
       #   working-directory: AppleALC
