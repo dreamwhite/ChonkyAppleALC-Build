@@ -19,18 +19,9 @@ jobs:
         id: applealc-latest-release
         working-directory: AppleALC
         run: echo "::set-output name=tag-name::$(git describe --tags `git rev-list --tags --max-count=1`)"
-      - name: Check AppleALC tag name
-        working-directory: AppleALC
-        run: |
-          if [ -z "${{ steps.applealc-latest-release.outputs.tag-name }}" ] || [ "${{ steps.applealc-latest-release.outputs.tag-name }}" == "null" ]; then
-            echo "Tag name is null"
-            echo "::set-output name=tag-name::$(git describe --tags `git rev-list --tags --max-count=1`)"
-          fi
       - name: Checkout to AppleALC latest stable release
         working-directory: AppleALC
-        run: |
-          echo ${{ steps.applealc-latest-release.outputs.tag-name }}
-          git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
+        run: git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
       # - name: Remove compressed kern_resources.cpp
       #   working-directory: AppleALC
       #   run: "[ ! -e AppleALC/kern_resources.cpp ] && rm -rf AppleALC/kern_resources.cpp"
