@@ -26,7 +26,7 @@ jobs:
         run: git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
       - name: Generate .md files
         run: |
-          cp json2md.py layout_id_finder.py AppleALC
+          cp .assets/scripts{json2md.py,layout_id_finder.py} AppleALC
           cd AppleALC
           rm *.md
           python3 layout_id_finder.py
