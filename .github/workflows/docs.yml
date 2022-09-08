@@ -43,6 +43,7 @@ jobs:
           mv ALC*.md Realtek
           mv STAC*.md SigmaTel
           mv VT*.md VIA
+          rm -rf ../{AnalogDevices,CirrusLogic,Conexant,Creative,IDT,Realtek,SigmaTel,VIA}
           mv * ../
       - name: Remove AppleALC directory
         run: rm -rf AppleALC
