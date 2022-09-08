@@ -20,7 +20,7 @@ jobs:
         run: echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latet' | jq -r '.tag_name')"
       - name: Check AppleALC tag name
         run: |
-          if [[ -z ${{ steps.applealc-latest-release.outputs.tag-name }} ]]; then
+          if [ ! ${{ steps.applealc-latest-release.outputs.tag-name }} ]; then
             echo "Tag name is null"
             echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latest' | jq -r '.tag_name')"
           fi
