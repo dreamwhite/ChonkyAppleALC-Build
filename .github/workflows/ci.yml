@@ -22,48 +22,49 @@ jobs:
       - name: Checkout to AppleALC latest stable release
         working-directory: AppleALC
         run: git checkout ${{ steps.applealc-latest-release.outputs.tag-name }}
-      # - name: Remove compressed kern_resources.cpp
-      #   working-directory: AppleALC
-      #   run: "[ ! -e AppleALC/kern_resources.cpp ] && rm -rf AppleALC/kern_resources.cpp"
-      # - name: Clone MacKernelSDK from source
-      #   working-directory: AppleALC
-      #   run: |
-      #     echo "WARNING: MacKernelSDK doesn't appear to be cloned. Cloning...;"
-      #     git clone https://github.com/acidanthera/MacKernelSDK.git
-      # - name: Build Lilu DEBUG from bootstrap.sh
-      #   working-directory: AppleALC
-      #   run: |
-      #     echo "WARNING: Lilu debug doesn't appear to be there. Building...";
-      #     wget https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh  > /dev/null 2>&1
-      #     bash bootstrap.sh
-      # - name: Create a temp folder
-      #   working-directory: AppleALC
-      #   run: |
-      #     mv Resources Resources_bak
-      #     mkdir Resources
-      #     mv Resources_bak/PinConfigs.kext Resources
-      #     mv Resources_bak/Controllers.plist Resources
-      #     mv Resources_bak/Kexts.plist Resources
-      #     mv Resources_bak/Vendors.plist Resources
-      # - name: Set codecs list
-      #   working-directory: AppleALC
-      #   run: echo '::set-output name=CODECS::$(ls Resources_bak)'
-      #   id: codecs
-      # - name: Build AppleALC for each codec
-      #   working-directory: AppleALC
-      #   run: |
-      #     for codec in ${{ steps.codecs.outputs.CODECS }}; do
-      #       if [ -d Resources_bak/$codec ]; then
-      #         mv Resources_bak/$codec Resources/
-      #         xcodebuild -quiet -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out 
-      #         mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
-      #         rm -rf Resources/$codec out
-      #         echo "Finished building $codec variant for AppleALC"
-      #       fi
-      #     done;
-      # - name: Upload to artifacts
-      #   if: always()
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Artifacts
-      #     path: Kexts/*
+      - name: Remove compressed kern_resources.cpp
+        working-directory: AppleALC
+        run: "[ ! -e AppleALC/kern_resources.cpp ] && rm -rf AppleALC/kern_resources.cpp"
+      - name: Clone MacKernelSDK from source
+        working-directory: AppleALC
+        run: |
+          echo "WARNING: MacKernelSDK doesn't appear to be cloned. Cloning...;"
+          git clone https://github.com/acidanthera/MacKernelSDK.git
+      - name: Build Lilu DEBUG from bootstrap.sh
+        working-directory: AppleALC
+        run: |
+          echo "WARNING: Lilu debug doesn't appear to be there. Building...";
+          wget https://raw.githubusercontent.com/acidanthera/Lilu/master/Lilu/Scripts/bootstrap.sh  > /dev/null 2>&1
+          bash bootstrap.sh
+      - name: Create a temp folder
+        working-directory: AppleALC
+        run: |
+          mv Resources Resources_bak
+          mkdir Resources
+          mv Resources_bak/PinConfigs.kext Resources
+          mv Resources_bak/Controllers.plist Resources
+          mv Resources_bak/Kexts.plist Resources
+          mv Resources_bak/Vendors.plist Resources
+      - name: Set codecs list
+        working-directory: AppleALC
+        run: echo '::set-output name=CODECS::$(ls Resources_bak)'
+        id: codecs
+      - name: Build AppleALC for each codec
+        working-directory: AppleALC
+        run: |
+          for codec in ${{ steps.codecs.outputs.CODECS }}; do
+            if [ -d Resources_bak/$codec ]; then
+              echo "Start building $codec variant for AppleALC"
+              mv Resources_bak/$codec Resources/
+              xcodebuild -quiet -project AppleALC.xcodeproj -scheme AppleALC -configuration Release -sdk macosx -derivedDataPath out 
+              mv out/Build/Products/Release/*.zip ../Kexts/$codec.zip
+              rm -rf Resources/$codec out
+              echo "Finished building $codec variant for AppleALC"
+            fi
+          done;
+      - name: Upload to artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: Kexts/*
