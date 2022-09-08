@@ -1,8 +1,8 @@
 name: Build
 on:
   push:
-    branches:
-      - ci-tests
+  pull_request:
+  workflow_dispatch:
   release:
     types: [published]
 jobs:
