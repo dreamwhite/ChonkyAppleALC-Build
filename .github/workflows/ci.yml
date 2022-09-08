@@ -17,12 +17,12 @@ jobs:
         run: git clone https://github.com/acidanthera/AppleALC
       - name: Get AppleALC latest stable release
         id: applealc-latest-release
-        run: echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latet' | jq -r '.tag_name')"
+        run: echo "::set-output name=tag-name::$(git ls-remote --tags --refs https://github.com/acidanthera/AppleALC.assdasdasdasd | tail -n1 | cut -d/ -f3)"
       - name: Check AppleALC tag name
         run: |
           if [ -z "${{ steps.applealc-latest-release.outputs.tag-name }}" ] || [ "${{ steps.applealc-latest-release.outputs.tag-name }}" == "null" ]; then
             echo "Tag name is null"
-            echo "::set-output name=tag-name::$(curl --silent 'https://api.github.com/repos/acidanthera/AppleALC/releases/latest' | jq -r '.tag_name')"
+            echo "::set-output name=tag-name::$(git ls-remote --tags --refs https://github.com/acidanthera/AppleALC.git | tail -n1 | cut -d/ -f3)"
           fi
       - name: Checkout to AppleALC latest stable release
         working-directory: AppleALC
