@@ -29,6 +29,5 @@ def find_layout_ids():
 
     return final_output
 
-
 with open('codecs.json', 'w') as fp:
     json.dump(find_layout_ids(), fp, indent=4)
