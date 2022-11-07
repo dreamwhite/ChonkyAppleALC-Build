@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  release:
+    types: [published]
+
+jobs:
+  ocvalidate:
+    name: "Build slimmed AppleALC"
+    uses: ./.github/workflows/build.yml
+  generate-docs:
+    name: "Generate Docs"
+    uses: ./.github/workflows/docs.yml
