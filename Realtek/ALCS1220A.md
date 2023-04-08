@@ -10,5 +10,6 @@
 | 8 | Realtek ALC S1220A _MSI_z490i_unify_by_vio |
 | 11 | Realtek ALC S1220A Kushamot for Asus Z270G mb (based on Mirone's layout 7) |
 | 13 | Realtek ALC S1220A for Asus ProArt Z690-Creator WiFi (CaseySJ) |
+| 15 | Realtek ALC S1220A for Asus ROG Strix X570-F Gaming (CaseySJ) |
 | 20 | Realtek ALC S1220A RodionS, Nacho 2.0 outputs(green)+2 inputs+front panel+SPDIF/Optical |
 | 21 | Realtek ALC S1220A RodionS, Nacho 5.1 outputs(green, black, orange)+2 inputs+front panel+SPDIF/Optical  |
