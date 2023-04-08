@@ -9,5 +9,6 @@
 | 11 | ALCS1200A for msi-MAG-Z490-TOMAHAWK by owen0o0 |
 | 49 | ALCS1200A for Asrock Z490M-ITX by VictorXu |
 | 50 | VictorXu - ALCS1200A for Gigabyte B460M Aorus Pro |
-| 51 | GeorgeWan - ALCS1200A for ASROCK Z490 Steel Legend |
+| 51 | GeorgeWan - ALCS1200A for ASROCK-Z490-Steel-Legend |
+| 52 | GeorgeWan - ALCS1200A for MSI-Mortar-B460M |
 | 69 | Lorys89 and Vorshim92 - ALCS1200A for ASROCK Z490M ITX AC |
