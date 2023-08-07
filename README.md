@@ -1,4 +1,4 @@
-# ChonkyAppleALC 1.8.3
+# ChonkyAppleALC
 
 ## AppleALC layout list
 
