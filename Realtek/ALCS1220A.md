@@ -13,3 +13,4 @@
 | 15 | Realtek ALC S1220A for Asus ROG Strix X570-F Gaming (CaseySJ) |
 | 20 | Realtek ALC S1220A RodionS, Nacho 2.0 outputs(green)+2 inputs+front panel+SPDIF/Optical |
 | 21 | Realtek ALC S1220A RodionS, Nacho 5.1 outputs(green, black, orange)+2 inputs+front panel+SPDIF/Optical  |
+| 99 | Realtek ALC S1220A for MSI X470 Gaming Pro Carbon |
